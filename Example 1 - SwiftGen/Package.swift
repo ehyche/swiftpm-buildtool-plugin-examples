@@ -4,10 +4,19 @@ import PackageDescription
 let package = Package(
     name: "SwiftGenExample",
     defaultLocalization: "en",
+    platforms: [.iOS(.v14), .macOS(.v10_15)],
+    products: [
+        .library(
+            name: "SwiftGenExampleLibrary",
+            targets: ["SwiftGenExampleLibrary"]
+        ),
+    ],
     targets: [
-        // A local tool that uses a build tool plugin.
-        .executableTarget(
-            name: "SwiftGenExample",
+        .target(
+            name: "SwiftGenExampleLibrary",
+            exclude: [
+                "Resources/swiftgen.yml"
+            ],
             plugins: [
                 "SwiftGenPlugin",
             ]
@@ -26,9 +35,9 @@ let package = Package(
             path: "Binaries/SwiftGenBinary.artifactbundle"
         ),
         .testTarget(
-            name: "SwiftGenExampleTests",
+            name: "SwiftGenExampleLibraryTests",
             dependencies: [
-                "SwiftGenExample",
+                .init(stringLiteral: "SwiftGenExampleLibrary"),
             ]
         ),
     ]
