@@ -10,8 +10,22 @@ let package = Package(
             name: "SwiftGenExampleLibrary",
             targets: ["SwiftGenExampleLibrary"]
         ),
+        .library(
+            name: "ExampleAppDependencies",
+            targets: ["ExampleAppDependencies"]
+        ),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/marksands/BetterCodable", exact: "0.4.0"),
     ],
     targets: [
+        .target(
+            name: "ExampleAppDependencies",
+            dependencies: [
+                "SwiftGenExampleLibrary",
+                "BetterCodable",
+            ]
+        ),
         .target(
             name: "SwiftGenExampleLibrary",
             exclude: [
