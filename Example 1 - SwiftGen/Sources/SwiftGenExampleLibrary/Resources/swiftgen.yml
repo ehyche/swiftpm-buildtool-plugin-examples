@@ -5,7 +5,7 @@ strings:
   inputs: ${PROJECT_DIR}/Sources/${TARGET_NAME}/Resources/en.lproj
   outputs:
     - templateName: structured-swift5
-      output: ${DERIVED_SOURCES_DIR}/Strings+Generated.swift
+      output: ${DERIVED_SOURCES_DIR}/Strings.swift
 xcassets:
   inputs: ${PROJECT_DIR}/Sources/${TARGET_NAME}/Resources/Media.xcassets
   outputs:
